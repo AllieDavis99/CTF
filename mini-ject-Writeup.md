@@ -12,8 +12,11 @@ Opening the Mini-ject website, we can immediately see a post that contains the S
 ```
 
 We see that the 'posts' table has a 'private' variable that should hide certain posts. We want to un-hide those posts.
-We'll need to use an SQL injection to bypass the check that a post is private. 
+
+We'll need to use an SQL injection to bypass the check for whether or not a post is private. 
+
 It seems like the SQL SELECT statement being used only looks at whether a post is private and whether a post contains the string entered by the user. 
+
 So the statement will take the form of either: 
 
 ```
@@ -26,6 +29,7 @@ SELECT * FROM posts WHERE posts.private = 'false' AND posts.text contains {filte
 ```
 
 The first statement is simpler to test because displaying the private posts only requires that we comment out the rest of the line, so we'll test that first. 
+
 We can test this by entering the text:
 
 ```
